@@ -11,7 +11,8 @@ import {
   Code2, Database, Server, Layout, Cloud, Wrench, Brain, Users, Coffee,
   GraduationCap, Award, MapPin, Mail, Phone, ExternalLink, ChevronUp,
   Menu, X, Download, Send, ArrowRight, Terminal, Sparkles, Layers,
-  Shield, Zap, BookOpen, Globe, FileCode, GitBranch, Cpu
+  Shield, Zap, BookOpen, Globe, FileCode, GitBranch, Cpu,
+  Home, User, Briefcase, ChevronRight
 } from 'lucide-react';
 
 // Aliases for compatibility
@@ -31,5 +32,6 @@ export {
   Code2, Database, Server, Layout, Cloud, Wrench, Brain, Users, Coffee,
   GraduationCap, Award, MapPin, Mail, Phone, ExternalLink, ChevronUp,
   Menu, X, Download, Send, ArrowRight, Terminal, Sparkles, Layers,
-  Shield, Zap, BookOpen, Globe, FileCode, GitBranch, Cpu
+  Shield, Zap, BookOpen, Globe, FileCode, GitBranch, Cpu,
+  Home, User, Briefcase, ChevronRight
 };
