@@ -45,8 +45,8 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-3 space-y-6"
           >
-            <div className="glass rounded-2xl p-8 card-hover">
-              <h3 className="font-heading text-xl font-semibold mb-4 text-text">
+            <div className="glass rounded-2xl p-5 sm:p-8 card-hover">
+              <h3 className="font-heading text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-text">
                 Professional Overview
               </h3>
               <div className="space-y-4 text-muted leading-relaxed">

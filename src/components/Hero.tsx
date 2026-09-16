@@ -65,7 +65,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section id="home" className="relative min-h-[calc(100dvh-4rem)] lg:min-h-screen flex flex-col justify-start lg:justify-center pt-24 sm:pt-28 lg:pt-20 pb-12 lg:pb-0 overflow-hidden">
       {/* Floating Coffee Icons */}
       <FloatingIcon delay={0} x="5%" y="15%" size={40} />
       <FloatingIcon delay={2} x="85%" y="20%" size={32} />
@@ -82,8 +82,8 @@ export default function Hero() {
         <SiJava size={120} />
       </motion.div>
 
-      <div className="section-container relative z-10 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-6 lg:py-16 relative z-10 w-full">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left – Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -95,13 +95,13 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20 mb-8"
+              className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass border border-primary/20 mb-4 sm:mb-8"
             >
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-400"></span>
               </span>
-              <span className="text-sm font-medium text-muted">Open to Opportunities</span>
+              <span className="text-xs sm:text-sm font-medium text-muted">Open to Opportunities</span>
             </motion.div>
 
             {/* Greeting */}
@@ -109,7 +109,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="text-muted text-lg md:text-xl font-medium mb-2"
+              className="text-muted text-base sm:text-lg md:text-xl font-medium mb-1.5 sm:mb-2"
             >
               Hello, I'm
             </motion.p>
@@ -119,7 +119,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight"
+              className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-3 sm:mb-4 leading-tight"
             >
               <span className="text-text">Shyam</span>
               <br />
@@ -131,10 +131,10 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
-              className="flex items-center gap-2 mb-8"
+              className="flex items-center gap-2 mb-4 sm:mb-8"
             >
-              <span className="text-muted text-lg md:text-xl">I'm a</span>
-              <span className="text-primary font-display font-semibold text-lg md:text-xl">
+              <span className="text-muted text-base sm:text-lg md:text-xl">I'm a</span>
+              <span className="text-primary font-display font-semibold text-base sm:text-lg md:text-xl">
                 {typedText}
               </span>
               <span className="typing-cursor" />
@@ -145,7 +145,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7 }}
-              className="text-muted text-base md:text-lg leading-relaxed max-w-xl mb-10"
+              className="text-muted text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mb-6 sm:mb-10"
             >
               2024 CSE Graduate with hands-on experience building full-stack applications using
               Java, Spring Boot, Angular, and MySQL. Passionate about clean code, scalable
@@ -157,29 +157,29 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-3 sm:gap-4"
             >
               <a
                 href="/Shyamganesh_Resume.pdf"
                 download
-                className="btn-primary inline-flex items-center gap-2 text-base"
+                className="btn-primary inline-flex items-center justify-center gap-2 text-sm sm:text-base py-3 px-5 sm:px-6 rounded-xl"
               >
-                <Download size={18} />
+                <Download size={17} />
                 Download Resume
               </a>
               <button
                 onClick={() => scrollTo('contact')}
-                className="btn-outline inline-flex items-center gap-2 text-base"
+                className="btn-outline inline-flex items-center justify-center gap-2 text-sm sm:text-base py-3 px-5 sm:px-6 rounded-xl"
               >
-                <Send size={18} />
+                <Send size={17} />
                 Hire Me
               </button>
               <button
                 onClick={() => scrollTo('contact')}
-                className="btn-outline inline-flex items-center gap-2 text-base border-muted/30 text-muted hover:text-text hover:border-muted/50"
+                className="btn-outline inline-flex items-center justify-center gap-2 text-sm sm:text-base py-3 px-5 sm:px-6 rounded-xl border-muted/30 text-muted hover:text-text hover:border-muted/50"
               >
                 Contact Me
-                <ArrowRight size={18} />
+                <ArrowRight size={17} />
               </button>
             </motion.div>
           </motion.div>
@@ -258,7 +258,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="hidden lg:block absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}

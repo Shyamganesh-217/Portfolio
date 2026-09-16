@@ -10,7 +10,6 @@ interface NavItem {
   id: string;
   label: string;
   icon: React.ReactNode;
-  badge?: string;
 }
 
 const navLinks: NavItem[] = [
@@ -26,10 +25,10 @@ const navLinks: NavItem[] = [
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const activeSection = useScrollSpy(navLinks.map((l) => l.id), 150);
+  const activeSection = useScrollSpy(navLinks.map((l) => l.id), 120);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 30);
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -58,45 +57,45 @@ export default function Navbar() {
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      const navHeight = 70;
+      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - navHeight,
+        behavior: 'smooth',
+      });
       setIsMobileOpen(false);
     }
   };
 
   return (
     <>
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      <nav
+        className={`fixed top-0 left-0 right-0 z-40 transition-colors duration-300 ${
           isScrolled
-            ? 'glass-strong shadow-lg shadow-black/25 border-b border-border/40'
-            : 'bg-bg/40 backdrop-blur-md border-b border-transparent lg:bg-transparent lg:backdrop-blur-none'
+            ? 'bg-[#0F172A]/95 backdrop-blur-xl shadow-lg shadow-black/40 border-b border-border/50'
+            : 'bg-[#0F172A]/90 backdrop-blur-md border-b border-border/20 lg:bg-transparent lg:backdrop-blur-none lg:border-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20">
+          <div className="flex items-center justify-between h-16 sm:h-18 lg:h-20">
             {/* Brand Logo */}
-            <motion.button
+            <button
               onClick={() => scrollTo('home')}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2.5 cursor-pointer text-left group"
-              aria-label="Home"
+              className="flex items-center gap-2.5 cursor-pointer text-left focus:outline-none group"
+              aria-label="Shyam Ganesh Home"
             >
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center font-display font-bold text-white text-base shadow-md shadow-primary/20 group-hover:shadow-primary/40 transition-shadow">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center font-display font-bold text-white text-sm sm:text-base shadow-md shadow-primary/25 shrink-0 group-hover:scale-105 transition-transform">
                 SG
               </div>
               <div className="flex flex-col">
-                <span className="font-display font-bold text-base md:text-lg tracking-tight leading-tight">
+                <span className="font-display font-bold text-base sm:text-lg tracking-tight leading-tight text-text">
                   Shyam<span className="text-primary">Ganesh</span>
                 </span>
-                <span className="text-[10px] text-muted font-medium tracking-wider uppercase -mt-0.5 hidden sm:block">
+                <span className="text-[10px] text-muted font-medium tracking-wider uppercase leading-none hidden xs:block">
                   Java Full Stack
                 </span>
               </div>
-            </motion.button>
+            </button>
 
             {/* Desktop Navigation Links */}
             <div className="hidden lg:flex items-center gap-1">
@@ -135,30 +134,29 @@ export default function Navbar() {
               <a
                 href="/Shyamganesh_Resume.pdf"
                 download
-                className="px-3 py-1.5 rounded-lg bg-primary/10 border border-primary/25 text-primary text-xs font-semibold inline-flex items-center gap-1.5 active:scale-95 transition-transform"
+                className="px-2.5 py-1.5 rounded-lg bg-primary/15 border border-primary/30 text-primary text-xs font-semibold flex items-center gap-1.5 active:scale-95 transition-transform"
                 aria-label="Download Resume"
               >
                 <Download size={13} />
-                <span className="hidden xs:inline">Resume</span>
+                <span>Resume</span>
               </a>
 
-              <motion.button
-                whileTap={{ scale: 0.9 }}
+              <button
                 onClick={() => setIsMobileOpen(!isMobileOpen)}
-                className="p-2.5 rounded-xl glass border border-border/50 text-text hover:text-primary transition-colors cursor-pointer flex items-center justify-center"
+                className="w-10 h-10 rounded-xl bg-slate-800/80 border border-slate-700/60 text-text hover:text-primary flex items-center justify-center transition-colors cursor-pointer active:scale-95"
                 aria-label={isMobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
                 aria-expanded={isMobileOpen}
               >
                 {isMobileOpen ? (
-                  <X size={22} className="text-primary transition-transform duration-200" />
+                  <X size={20} className="text-primary" />
                 ) : (
-                  <Menu size={22} className="transition-transform duration-200" />
+                  <Menu size={20} />
                 )}
-              </motion.button>
+              </button>
             </div>
           </div>
         </div>
-      </motion.nav>
+      </nav>
 
       {/* Enhanced Mobile Drawer */}
       <AnimatePresence>
@@ -169,8 +167,8 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="absolute inset-0 bg-black/75 backdrop-blur-md"
+              transition={{ duration: 0.2 }}
+              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
               onClick={() => setIsMobileOpen(false)}
             />
 
@@ -180,68 +178,63 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 28, stiffness: 280 }}
-              className="absolute right-0 top-0 bottom-0 w-[85vw] max-w-[340px] bg-[#0F172A]/95 backdrop-blur-2xl border-l border-border/40 shadow-2xl flex flex-col justify-between overflow-hidden"
+              className="absolute right-0 top-0 bottom-0 w-[84vw] max-w-[320px] h-[100dvh] bg-[#0F172A] border-l border-slate-700/60 shadow-2xl flex flex-col justify-between overflow-hidden"
             >
               {/* Drawer Top / Header */}
-              <div className="p-5 border-b border-border/30">
+              <div className="p-4 sm:p-5 border-b border-border/30">
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center font-display font-bold text-white text-sm">
+                    <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center font-display font-bold text-white text-xs shadow-md">
                       SG
                     </div>
                     <div>
-                      <h3 className="font-display font-bold text-base leading-tight">
+                      <h3 className="font-display font-bold text-sm leading-tight text-text">
                         Shyam<span className="text-primary">Ganesh</span>
                       </h3>
-                      <p className="text-[11px] text-muted">Java Full Stack</p>
+                      <p className="text-[10px] text-muted">Java Full Stack Dev</p>
                     </div>
                   </div>
 
-                  {/* Dedicated Close Button inside Drawer */}
-                  <motion.button
-                    whileTap={{ scale: 0.9 }}
+                  {/* Dedicated Close Button */}
+                  <button
                     onClick={() => setIsMobileOpen(false)}
-                    className="w-9 h-9 rounded-xl glass border border-border/50 flex items-center justify-center text-muted hover:text-primary transition-colors cursor-pointer"
+                    className="w-8 h-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-muted hover:text-primary transition-colors cursor-pointer active:scale-95"
                     aria-label="Close menu"
                   >
-                    <X size={20} />
-                  </motion.button>
+                    <X size={18} />
+                  </button>
                 </div>
 
                 {/* Status Pill */}
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20">
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
                   </span>
-                  <span className="text-xs font-medium text-text">Available for Opportunities</span>
+                  <span className="text-[11px] font-medium text-text">Open to Opportunities</span>
                 </div>
               </div>
 
               {/* Scrollable Nav Item Links */}
-              <div className="flex-1 overflow-y-auto px-4 py-4 space-y-1.5">
-                {navLinks.map((link, i) => {
+              <div className="flex-1 overflow-y-auto px-3 py-3 space-y-1">
+                {navLinks.map((link) => {
                   const isActive = activeSection === link.id;
                   return (
-                    <motion.button
+                    <button
                       key={link.id}
-                      initial={{ opacity: 0, x: 25 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.05 + i * 0.04, duration: 0.3 }}
-                      whileTap={{ scale: 0.98 }}
                       onClick={() => scrollTo(link.id)}
-                      className={`w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer ${
+                      className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 cursor-pointer text-left ${
                         isActive
-                          ? 'bg-gradient-to-r from-primary/20 via-primary/10 to-transparent text-primary border border-primary/30 font-semibold shadow-sm'
+                          ? 'bg-gradient-to-r from-primary/20 via-primary/10 to-transparent text-primary border border-primary/30 font-semibold'
                           : 'text-muted hover:text-text hover:bg-white/5 border border-transparent'
                       }`}
                     >
                       <div className="flex items-center gap-3">
                         <div
-                          className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${
+                          className={`w-7 h-7 rounded-lg flex items-center justify-center transition-colors ${
                             isActive
                               ? 'bg-primary text-white shadow-sm shadow-primary/30'
-                              : 'bg-white/5 text-muted group-hover:text-text'
+                              : 'bg-white/5 text-muted'
                           }`}
                         >
                           {link.icon}
@@ -249,56 +242,56 @@ export default function Navbar() {
                         <span>{link.label}</span>
                       </div>
                       <ChevronRight
-                        size={16}
-                        className={`transition-transform duration-200 ${
-                          isActive ? 'text-primary translate-x-0.5' : 'text-muted/40'
+                        size={15}
+                        className={`transition-transform duration-150 ${
+                          isActive ? 'text-primary translate-x-0.5' : 'text-muted/30'
                         }`}
                       />
-                    </motion.button>
+                    </button>
                   );
                 })}
               </div>
 
               {/* Drawer Bottom / Footer Actions */}
-              <div className="p-5 border-t border-border/30 bg-bg-card/40 space-y-3.5">
+              <div className="p-4 border-t border-border/30 bg-slate-900/60 space-y-3">
                 {/* Full Width Resume Button */}
                 <a
                   href="/Shyamganesh_Resume.pdf"
                   download
-                  className="btn-primary w-full py-3 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 shadow-lg shadow-primary/25"
+                  className="btn-primary w-full py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 shadow-md shadow-primary/20"
                 >
-                  <Download size={16} />
+                  <Download size={14} />
                   Download Resume
                 </a>
 
                 {/* Direct Social / Contact Shortcuts */}
                 <div className="flex items-center justify-between pt-1">
-                  <span className="text-xs text-muted">Chennai, TN, India</span>
-                  <div className="flex items-center gap-2">
+                  <span className="text-[11px] text-muted">Chennai, India</span>
+                  <div className="flex items-center gap-1.5">
                     <a
                       href="https://github.com/Shyamganesh-217"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-8 h-8 rounded-lg glass border border-border/50 flex items-center justify-center text-muted hover:text-primary transition-colors"
+                      className="w-7 h-7 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-muted hover:text-primary transition-colors"
                       aria-label="GitHub"
                     >
-                      <SiGithub size={15} />
+                      <SiGithub size={13} />
                     </a>
                     <a
                       href="https://linkedin.com/in/shyamganesh-m"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-8 h-8 rounded-lg glass border border-border/50 flex items-center justify-center text-muted hover:text-primary transition-colors"
+                      className="w-7 h-7 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-muted hover:text-primary transition-colors"
                       aria-label="LinkedIn"
                     >
-                      <SiLinkedin size={15} />
+                      <SiLinkedin size={13} />
                     </a>
                     <a
                       href="mailto:shyamganesh217@gmail.com"
-                      className="w-8 h-8 rounded-lg glass border border-border/50 flex items-center justify-center text-muted hover:text-primary transition-colors"
+                      className="w-7 h-7 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-muted hover:text-primary transition-colors"
                       aria-label="Email"
                     >
-                      <Mail size={15} />
+                      <Mail size={13} />
                     </a>
                   </div>
                 </div>
