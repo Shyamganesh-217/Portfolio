@@ -64,7 +64,7 @@ export default function Certifications() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto"
         >
           {certifications.map((cert, i) => (
             <motion.div
@@ -76,10 +76,10 @@ export default function Certifications() {
               {/* Top gradient bar */}
               <div className={`h-1.5 bg-gradient-to-r ${cert.color}`} />
 
-              <div className="p-6">
+              <div className="p-5 sm:p-6">
                 {/* Badge number */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-mono text-muted bg-bg-card-hover px-2 py-1 rounded-md">
+                <div className="flex items-center justify-between mb-3.5 sm:mb-4">
+                  <span className="text-xs font-mono text-muted bg-bg-card-hover px-2 py-0.5 sm:py-1 rounded-md">
                     #{String(i + 1).padStart(2, '0')}
                   </span>
                   <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${cert.color} flex items-center justify-center opacity-80`}>
@@ -88,7 +88,7 @@ export default function Certifications() {
                 </div>
 
                 {/* Title */}
-                <h3 className="font-heading font-semibold text-text mb-2 leading-snug group-hover:text-primary transition-colors text-sm md:text-base">
+                <h3 className="font-heading font-semibold text-text mb-2 leading-snug group-hover:text-primary transition-colors text-sm sm:text-base">
                   {cert.title}
                 </h3>
 

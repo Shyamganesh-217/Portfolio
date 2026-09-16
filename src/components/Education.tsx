@@ -56,9 +56,9 @@ export default function Education() {
                 {/* Top gradient */}
                 <div className="h-2 bg-gradient-to-r from-primary via-secondary to-accent" />
 
-                <div className="p-6 md:p-8">
+                <div className="p-5 sm:p-6 md:p-8">
                   {/* Badge */}
-                  <div className="flex flex-wrap gap-3 mb-4">
+                  <div className="flex flex-wrap gap-2.5 sm:gap-3 mb-4">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold">
                       <GraduationCap size={14} />
                       2020 – 2024
@@ -69,43 +69,43 @@ export default function Education() {
                   </div>
 
                   {/* Degree */}
-                  <h3 className="font-heading text-xl md:text-2xl font-bold text-text mb-2">
+                  <h3 className="font-heading text-lg sm:text-xl md:text-2xl font-bold text-text mb-2">
                     B.E. in Computer Science and Engineering
                   </h3>
 
                   {/* College */}
-                  <p className="text-secondary font-medium text-lg mb-1">
+                  <p className="text-secondary font-medium text-base sm:text-lg mb-1">
                     Adithya Institute of Technology
                   </p>
-                  <p className="text-muted text-sm mb-4 flex items-center gap-1.5">
+                  <p className="text-muted text-xs sm:text-sm mb-4 flex items-center gap-1.5">
                     <MapPin size={14} />
                     Coimbatore, India • Affiliated to Anna University
                   </p>
 
                   {/* CGPA */}
-                  <div className="glass rounded-xl p-4 mb-6 inline-flex items-center gap-4">
+                  <div className="glass rounded-xl p-3.5 sm:p-4 mb-5 sm:mb-6 flex sm:inline-flex items-center gap-4">
                     <div>
-                      <p className="text-xs text-muted uppercase tracking-wider">CGPA</p>
-                      <p className="text-3xl font-bold gradient-text font-display">8.03</p>
+                      <p className="text-[11px] sm:text-xs text-muted uppercase tracking-wider">CGPA</p>
+                      <p className="text-2xl sm:text-3xl font-bold gradient-text font-display">8.03</p>
                     </div>
-                    <div className="w-px h-12 bg-border" />
+                    <div className="w-px h-10 sm:h-12 bg-border" />
                     <div>
-                      <p className="text-xs text-muted uppercase tracking-wider">Batch</p>
-                      <p className="text-lg font-semibold text-text">2020 – 2024</p>
+                      <p className="text-[11px] sm:text-xs text-muted uppercase tracking-wider">Batch</p>
+                      <p className="text-base sm:text-lg font-semibold text-text">2020 – 2024</p>
                     </div>
                   </div>
 
                   {/* Relevant Coursework */}
                   <div>
-                    <p className="flex items-center gap-2 text-sm font-semibold text-primary uppercase tracking-wider mb-3">
+                    <p className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-primary uppercase tracking-wider mb-2.5 sm:mb-3">
                       <BookOpen size={14} />
                       Relevant Coursework
                     </p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
                       {coursework.map((course) => (
                         <span
                           key={course}
-                          className="px-3 py-1.5 rounded-lg bg-bg-card-hover/50 border border-border/50 text-xs font-medium text-muted"
+                          className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-bg-card-hover/50 border border-border/50 text-[11px] sm:text-xs font-medium text-muted"
                         >
                           {course}
                         </span>

@@ -73,23 +73,23 @@ export default function JavaExpertise() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
           {expertiseItems.map((item) => (
             <motion.div
               key={item.title}
               variants={staggerItem}
               whileHover={{ y: -6, scale: 1.02 }}
-              className="glass rounded-2xl p-6 card-hover group relative overflow-hidden"
+              className="glass rounded-2xl p-5 sm:p-6 card-hover group relative overflow-hidden"
             >
               {/* Gradient accent on hover */}
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-              <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/20 group-hover:border-primary/30 transition-all duration-300">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-3.5 sm:mb-4 group-hover:bg-primary/20 group-hover:border-primary/30 transition-all duration-300">
                 <span className="text-primary">{item.icon}</span>
               </div>
 
-              <h3 className="font-heading font-semibold text-text mb-2 group-hover:text-primary transition-colors duration-300">
+              <h3 className="font-heading font-semibold text-text text-base sm:text-lg mb-1.5 sm:mb-2 group-hover:text-primary transition-colors duration-300">
                 {item.title}
               </h3>
 

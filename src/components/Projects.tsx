@@ -117,7 +117,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       {/* Top gradient bar */}
       <div className={`h-2 bg-gradient-to-r ${project.gradient}`} />
 
-      <div className="p-6 md:p-8">
+      <div className="p-5 sm:p-6 md:p-8">
         {/* Header */}
         <div className="flex items-start justify-between mb-4">
           <div>
@@ -126,7 +126,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 Project {String(index + 1).padStart(2, '0')}
               </span>
             </div>
-            <h3 className="font-heading text-xl md:text-2xl font-bold text-text group-hover:text-primary transition-colors">
+            <h3 className="font-heading text-lg sm:text-xl md:text-2xl font-bold text-text group-hover:text-primary transition-colors">
               {project.title}
             </h3>
           </div>
@@ -135,10 +135,10 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center hover:bg-primary/20 transition-colors shrink-0"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center hover:bg-primary/20 transition-colors shrink-0"
               aria-label="View on GitHub"
             >
-              <SiGithub size={18} className="text-primary" />
+              <SiGithub size={17} className="text-primary" />
             </a>
           )}
         </div>
@@ -146,17 +146,17 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <p className="text-muted text-sm leading-relaxed mb-4">{project.description}</p>
 
         {/* Problem Statement */}
-        <div className="glass rounded-xl p-4 mb-5">
-          <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">Problem Statement</p>
-          <p className="text-sm text-muted leading-relaxed">{project.problem}</p>
+        <div className="glass rounded-xl p-3.5 sm:p-4 mb-4 sm:mb-5">
+          <p className="text-[11px] sm:text-xs font-semibold text-primary uppercase tracking-wider mb-1">Problem Statement</p>
+          <p className="text-xs sm:text-sm text-muted leading-relaxed">{project.problem}</p>
         </div>
 
         {/* Features */}
-        <div className="mb-5">
-          <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-3">Key Features</p>
+        <div className="mb-4 sm:mb-5">
+          <p className="text-[11px] sm:text-xs font-semibold text-primary uppercase tracking-wider mb-2.5 sm:mb-3">Key Features</p>
           <ul className="grid sm:grid-cols-2 gap-2">
             {project.features.map((feature) => (
-              <li key={feature} className="flex items-start gap-2 text-sm text-muted">
+              <li key={feature} className="flex items-start gap-2 text-xs sm:text-sm text-muted">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
                 {feature}
               </li>
@@ -165,13 +165,13 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         </div>
 
         {/* Tech Stack Badges */}
-        <div className="mb-5">
-          <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-3">Technologies</p>
-          <div className="flex flex-wrap gap-2">
+        <div className="mb-4 sm:mb-5">
+          <p className="text-[11px] sm:text-xs font-semibold text-primary uppercase tracking-wider mb-2.5 sm:mb-3">Technologies</p>
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {project.techStack.map((tech) => (
               <span
                 key={tech.name}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card-hover/50 border border-border/50 text-xs font-medium text-text"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-bg-card-hover/50 border border-border/50 text-[11px] sm:text-xs font-medium text-text"
               >
                 <span className="text-primary">{tech.icon}</span>
                 {tech.name}
@@ -181,14 +181,14 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         </div>
 
         {/* Learning Outcomes */}
-        <details className="group/details">
-          <summary className="text-xs font-semibold text-primary uppercase tracking-wider cursor-pointer flex items-center gap-2 mb-2">
-            Learning Outcomes
-            <ExternalLink size={12} className="rotate-0 group-open/details:rotate-90 transition-transform" />
+        <details className="group/details bg-slate-900/40 border border-border/40 rounded-xl p-3.5 my-3">
+          <summary className="text-[11px] sm:text-xs font-semibold text-primary uppercase tracking-wider cursor-pointer flex items-center justify-between select-none">
+            <span>Learning Outcomes</span>
+            <ExternalLink size={13} className="rotate-0 group-open/details:rotate-90 transition-transform text-primary" />
           </summary>
-          <ul className="space-y-1.5 mt-2">
+          <ul className="space-y-1.5 mt-3 pt-2 border-t border-border/20">
             {project.learnings.map((learning) => (
-              <li key={learning} className="flex items-start gap-2 text-sm text-muted">
+              <li key={learning} className="flex items-start gap-2 text-xs sm:text-sm text-muted">
                 <span className="text-primary mt-0.5">→</span>
                 {learning}
               </li>
@@ -202,7 +202,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-xl bg-primary/10 border border-primary/20 text-primary text-sm font-medium hover:bg-primary/20 transition-all group/btn"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 mt-4 sm:mt-6 px-5 py-3 rounded-xl bg-primary/10 border border-primary/20 text-primary text-sm font-medium hover:bg-primary/20 active:scale-98 transition-all group/btn"
           >
             <SiGithub size={16} />
             View on GitHub

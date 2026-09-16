@@ -107,7 +107,7 @@ const skillCategories: SkillCategory[] = [
 ];
 
 function ProgressBar({ level, delay }: { level: number; delay: number }) {
-  const { setRef, isInView } = useInView(0.3);
+  const { setRef, isInView } = useInView(0.15);
 
   return (
     <div className="progress-bar" ref={setRef}>
@@ -126,14 +126,14 @@ function SkillCard({ category, index }: { category: SkillCategory; index: number
     <motion.div
       variants={staggerItem}
       whileHover={{ y: -4 }}
-      className="glass rounded-2xl p-6 card-hover group"
+      className="glass rounded-2xl p-4 sm:p-6 card-hover group"
     >
       {/* Header */}
-      <div className="flex items-center gap-3 mb-5">
-        <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+      <div className="flex items-center gap-3 mb-4 sm:mb-5">
+        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors shrink-0">
           <span className="text-primary">{category.icon}</span>
         </div>
-        <h3 className="font-heading font-semibold text-text">{category.title}</h3>
+        <h3 className="font-heading font-semibold text-text text-sm sm:text-base">{category.title}</h3>
       </div>
 
       {/* Skills */}
