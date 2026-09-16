@@ -1,0 +1,16 @@
+{
+  "name": "Shyam Ganesh M - Portfolio",
+  "short_name": "SG Portfolio",
+  "description": "Java Full Stack Developer Portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F172A",
+  "theme_color": "#EA580C",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
